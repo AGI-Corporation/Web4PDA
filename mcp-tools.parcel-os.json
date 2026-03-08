@@ -1,0 +1,159 @@
+{
+  "version": "0.1.0",
+  "project": "Web4PDA",
+  "description": "Unified MCP tool schema for Route.X Parcel OS",
+  "tools": [
+    {
+      "name": "parcel_get_place_hierarchy",
+      "description": "Return country/region/county/city/parcel IDs for a coordinate.",
+      "server": "SpatialFabricServer",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "lat": {"type": "number"},
+          "lon": {"type": "number"}
+        },
+        "required": ["lat", "lon"]
+      }
+    },
+    {
+      "name": "parcel_get_parcel",
+      "description": "Return parcel geometry and attributes by parcel_id.",
+      "server": "SpatialFabricServer",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "parcel_id": {"type": "string"}
+        },
+        "required": ["parcel_id"]
+      }
+    },
+    {
+      "name": "parcel_list_layers",
+      "description": "List available map layers.",
+      "server": "SpatialFabricServer",
+      "input_schema": {"type": "object", "properties": {}}
+    },
+    {
+      "name": "parcel_get_features",
+      "description": "Fetch GeoJSON features from a layer within a bbox.",
+      "server": "SpatialFabricServer",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "layer_id": {"type": "string"},
+          "bbox": {"type": "array", "items": {"type": "number"}, "minItems": 4, "maxItems": 4}
+        },
+        "required": ["layer_id", "bbox"]
+      }
+    },
+    {
+      "name": "parcel_plan_route_between_parcels",
+      "description": "Plan a walking or driving route between two parcels.",
+      "server": "SpatialFabricServer",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "from_parcel_id": {"type": "string"},
+          "to_parcel_id": {"type": "string"},
+          "mode": {"type": "string", "enum": ["walk", "car"]}
+        },
+        "required": ["from_parcel_id", "to_parcel_id"]
+      }
+    },
+    {
+      "name": "parcel_get_agent_state",
+      "description": "Get optimization metrics and suggested actions for a parcel agent.",
+      "server": "ParcelAgentServer",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "parcel_id": {"type": "string"}
+        },
+        "required": ["parcel_id"]
+      }
+    },
+    {
+      "name": "parcel_update_goals",
+      "description": "Update optimization goals for a parcel agent.",
+      "server": "ParcelAgentServer",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "parcel_id": {"type": "string"},
+          "goals": {"type": "array", "items": {"type": "string"}}
+        },
+        "required": ["parcel_id", "goals"]
+      }
+    },
+    {
+      "name": "parcel_get_usdx_balance",
+      "description": "Get USDx stablecoin balance and limits for a parcel agent wallet.",
+      "server": "ExchangeServer",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "parcel_id": {"type": "string"}
+        },
+        "required": ["parcel_id"]
+      }
+    },
+    {
+      "name": "parcel_propose_usdx_incentive_contract",
+      "description": "Propose a USDx incentive contract for check-ins or data sharing via x402 protocol.",
+      "server": "ExchangeServer",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "parcel_id": {"type": "string"},
+          "counterparty_agent_id": {"type": "string"},
+          "purpose": {"type": "string"},
+          "asset_symbol": {"type": "string", "enum": ["USDx"]},
+          "rate_per_event": {"type": "number"},
+          "max_total": {"type": "number"}
+        },
+        "required": ["parcel_id", "counterparty_agent_id", "purpose", "asset_symbol", "rate_per_event", "max_total"]
+      }
+    },
+    {
+      "name": "parcel_sign_contract",
+      "description": "Sign a proposed USDx contract with the parcel agent wallet (EIP-712 style).",
+      "server": "ExchangeServer",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "parcel_id": {"type": "string"},
+          "contract_id": {"type": "string"}
+        },
+        "required": ["parcel_id", "contract_id"]
+      }
+    },
+    {
+      "name": "parcel_get_contract_status",
+      "description": "Get status of a USDx contract including spent and remaining amounts.",
+      "server": "ExchangeServer",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "contract_id": {"type": "string"}
+        },
+        "required": ["contract_id"]
+      }
+    },
+    {
+      "name": "market_build_agent",
+      "description": "Build a digital twin agent or avatar for a parcel or user in the Agent Market.",
+      "server": "AgentMarketServer",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "entity_type": {"type": "string", "enum": ["parcel", "user", "business"]},
+          "entity_id": {"type": "string"},
+          "avatar_config": {"type": "object"},
+          "capabilities": {"type": "array", "items": {"type": "string"}}
+        },
+        "required": ["entity_type", "entity_id"]
+      }
+    }
+  ]
+}
