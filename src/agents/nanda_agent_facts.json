@@ -1,0 +1,49 @@
+[
+  {
+    "id": "agent:spatial-fabric-sf",
+    "name": "Spatial Fabric SF Corridor",
+    "description": "Provides parcels, OSM layers, features, and routing for SF Frontier Corridor.",
+    "endpoints": [{"protocol": "http", "url": "http://localhost:3001"}],
+    "capabilities": ["place.hierarchy", "parcel.lookup", "layer.list", "features.query", "route.parcel"],
+    "regions": ["us-ca-sf-frontier-corridor"],
+    "policies": {"safety": "read-only", "data_sensitivity": "infrastructure"}
+  },
+  {
+    "id": "agent:parcel-agents-sf",
+    "name": "Parcel Agents SF Corridor",
+    "description": "Manages parcel agent state, optimization goals, and action recommendations.",
+    "endpoints": [
+      {"protocol": "http", "url": "http://localhost:3002"},
+      {"protocol": "mcp", "url": "http://localhost:4000"}
+    ],
+    "capabilities": ["parcel.agent_state", "parcel.optimize", "parcel.goals_update"],
+    "regions": ["us-ca-sf-frontier-corridor"],
+    "policies": {"safety": "analysis-only", "max_contract_value_usdx": 500}
+  },
+  {
+    "id": "agent:exchange-sf",
+    "name": "Exchange Agent SF (x402/USDx)",
+    "description": "Manages USDx stablecoin wallets and x402 incentive contracts for parcel agents.",
+    "endpoints": [
+      {"protocol": "http", "url": "http://localhost:3003"},
+      {"protocol": "mcp", "url": "http://localhost:4000"}
+    ],
+    "capabilities": ["wallet.usdx_balance", "contract.usdx_incentive", "contract.sign", "contract.status", "agent.message"],
+    "regions": ["us-ca-sf-frontier-corridor"],
+    "policies": {
+      "safety": "financial",
+      "requires_human_approval_above_usdx": 100,
+      "allowed_contract_types": ["incentive", "data_sharing"]
+    },
+    "wallet": {"asset_symbol": "USDx", "chain_id": 80001, "chain_name": "polygon-mumbai-testnet"}
+  },
+  {
+    "id": "agent:metaverse-browser-sf",
+    "name": "Metaverse Browser Agent SF",
+    "description": "WebXR/OpenXR spatial copilot for the SF Frontier corridor. Responds to parcel queries via MCP.",
+    "endpoints": [{"protocol": "mcp", "url": "http://localhost:4000"}],
+    "capabilities": ["scene.load", "scene.teleport", "layers.toggle", "view.describe", "copilot.query"],
+    "regions": ["us-ca-sf-frontier-corridor"],
+    "policies": {"safety": "read-only"}
+  }
+]
