@@ -1,0 +1,38 @@
+{
+  "type": "FeatureCollection",
+  "name": "SF Frontier Stikk Spots",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "spot_id": "stikk-sf-001",
+        "name": "Frontier Tower Lobby",
+        "business_type": "office",
+        "parcel_id": "us-ca-sf-001234-005-06",
+        "points_per_checkin": 10,
+        "active_rewards": ["free coffee", "discount voucher"],
+        "checkins_30d": 145
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4189, 37.7754]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "spot_id": "stikk-sf-002",
+        "name": "101 Spear Coffee",
+        "business_type": "cafe",
+        "parcel_id": "us-ca-sf-001234-005-08",
+        "points_per_checkin": 15,
+        "active_rewards": ["free drip coffee", "10% off"],
+        "checkins_30d": 89
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-122.4169, 37.7754]
+      }
+    }
+  ]
+}
