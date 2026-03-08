@@ -1,0 +1,69 @@
+{
+  "type": "FeatureCollection",
+  "name": "SF Frontier Corridor Parcels",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "parcel_id": "us-ca-sf-001234-005-06",
+        "address": "1 Frontier Tower, San Francisco, CA",
+        "zoning": "C-3-O",
+        "area_sqft": 12500,
+        "owner_type": "commercial",
+        "stikk_spot": true
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-122.4194, 37.7749],
+          [-122.4184, 37.7749],
+          [-122.4184, 37.7759],
+          [-122.4194, 37.7759],
+          [-122.4194, 37.7749]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "parcel_id": "us-ca-sf-001234-005-07",
+        "address": "2 Mission St, San Francisco, CA",
+        "zoning": "C-3-O",
+        "area_sqft": 9800,
+        "owner_type": "mixed",
+        "stikk_spot": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-122.4184, 37.7749],
+          [-122.4174, 37.7749],
+          [-122.4174, 37.7759],
+          [-122.4184, 37.7759],
+          [-122.4184, 37.7749]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "parcel_id": "us-ca-sf-001234-005-08",
+        "address": "101 Spear St, San Francisco, CA",
+        "zoning": "C-3-O",
+        "area_sqft": 15200,
+        "owner_type": "commercial",
+        "stikk_spot": true
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-122.4174, 37.7749],
+          [-122.4164, 37.7749],
+          [-122.4164, 37.7759],
+          [-122.4174, 37.7759],
+          [-122.4174, 37.7749]
+        ]]
+      }
+    }
+  ]
+}
