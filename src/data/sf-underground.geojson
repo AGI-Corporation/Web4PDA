@@ -1,0 +1,51 @@
+{
+  "type": "FeatureCollection",
+  "name": "SF Frontier Corridor Underground Utilities",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "utility_id": "ug-001",
+        "type": "electric",
+        "depth_m": 1.2,
+        "risk_level": "medium",
+        "operator": "PG&E",
+        "sue_quality_level": "B"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[-122.4194, 37.7749], [-122.4174, 37.7749]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "utility_id": "ug-002",
+        "type": "water",
+        "depth_m": 2.5,
+        "risk_level": "low",
+        "operator": "SFPUC",
+        "sue_quality_level": "A"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[-122.4194, 37.7754], [-122.4174, 37.7754]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "utility_id": "ug-003",
+        "type": "telecom",
+        "depth_m": 0.8,
+        "risk_level": "high",
+        "operator": "AT&T",
+        "sue_quality_level": "C"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[-122.4189, 37.7749], [-122.4189, 37.7759]]
+      }
+    }
+  ]
+}
